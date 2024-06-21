@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictive Analytics</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Chat Styles */
+    #chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .chat {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-bottom: 20px;
+    }
+
+    .chat-message {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+    }
+
+    .user-message {
+      background-color: #e6e6ff;
+      align-self: flex-end;
+    }
+
+    .ai-message {
+      background-color: #d9f2d9;
+    }
+
+    .user-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .user-input input {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    .user-input button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .user-input button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Predictive Analytics</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="medical_imaging.html">Medical Imaging</a></li>
+        <li><a href="nlp_in_healthcare.html">NLP in Healthcare</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="chat-container">
+      <div class="chat">
+        <div class="chat-message user-message">Hello, I have some patient data. Can you help me analyze it?</div>
+        <div class="chat-message ai-message">Sure, please provide the necessary data.</div>
+        <!-- Add more chat messages here -->
+      </div>
+      <div class="user-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Healthcare AI. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById('user-input');
+      var message = userInput.value.trim();
+      if (message !== '') {
+        appendMessage('user', message);
+        // Simulate AI response (replace with actual AI model integration)
+        setTimeout(function() {
+          appendMessage('ai', 'This is a response from the AI model.');
+        }, 1000);
+        userInput.value = '';
+      }
+    }
+
+    function appendMessage(sender, text) {
+      var chatContainer = document.querySelector('.chat');
+      var messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message');
+      messageElement.classList.add(sender + '-message');
+      messageElement.textContent = text;
+      chatContainer.appendChild(messageElement);
+      // Scroll to bottom of chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>

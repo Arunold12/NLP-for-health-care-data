@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Imaging</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      background-color: #555;
+      padding: 10px 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #ddd;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      color: #333;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Form Styles */
+    form {
+      margin: 0 auto;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Medical Imaging</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="predictive_analytics.html">Predictive Analytics</a></li>
+        <li><a href="nlp_in_healthcare.html">NLP in Healthcare</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Upload Image</h2>
+      <form id="imageUploadForm" enctype="multipart/form-data">
+        <input type="file" name="imageFile" id="imageFile">
+        <button type="button" onclick="uploadImage()">Submit</button>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Healthcare AI. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function uploadImage() {
+      var form = document.getElementById('imageUploadForm');
+      var formData = new FormData(form);
+
+      // Perform any client-side validation if needed
+
+      // Send the image data to the server using AJAX
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'process_image.php'); // Replace 'process_image.php' with your server-side script URL
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          // Image uploaded successfully
+          console.log('Image uploaded successfully');
+          // You can perform further actions here, such as displaying the results
+        } else {
+          // Error handling
+          console.error('Error uploading image');
+        }
+      };
+      xhr.send(formData);
+    }
+  </script>
+</body>
+</html>
